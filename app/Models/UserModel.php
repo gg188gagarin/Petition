@@ -32,9 +32,9 @@ class UserModel extends BaseModel
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert = [];
+    protected $beforeInsert = ['hashPassword'];
     protected $afterInsert = [];
-    protected $beforeUpdate = [];
+    protected $beforeUpdate = ['hashPassword'];
     protected $afterUpdate = [];
     protected $beforeFind = [];
     protected $afterFind = [];

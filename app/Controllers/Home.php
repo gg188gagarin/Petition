@@ -57,56 +57,55 @@ class Home extends BaseController
         if (!password_verify($request['password'], $user['password'])) {
             session()->setFlashdata('fail', "You password doesn't matches, please check it");
             return redirect()->to('/login')->withInput();
+        } else {
+            session()->set('user', $user);
+            return redirect()->to('/dashboard');
         }
-//        else {
-//            session()->set('user', $user);
-//            return redirect()->to('/dashboard');
-//        }
     }
 
-//    public function forgotPassword()
-//    {
-//        $step = 1;
-//        return view('home/forgot', compact('step'));
-//    }
+    public function forgotPassword()
+    {
+        $step = 1;
+        return view('home/forgot', compact('step'));
+    }
 
-//    public function sendForgotPassword()
-//    {
-//        if ($_REQUEST['email']) {
-//            $this->validation->setRules(UserModel::itemAlias('validation', 'forgot'));
-//            if (!$this->validation->run($_REQUEST)) {
-//                return view('home/forgot', ['errors' => $this->validation->getErrors(), 'email' => $_REQUEST['email']]);
-//            }
-//            $id = $this->user->where('email', $_REQUEST['email'])->first()['id'];
-//            $this->setUserId($id);
-//            $hashString = md5(time() . $id . $_REQUEST['email']);
-//            $currentTime = time();
-//            $hashExpiry = $currentTime + 1800;
-//            $data = array(
-//                'hash_key' => $hashString,
-//                'hash_expire' => $hashExpiry
-//            );
-//            $this->user->update($this->userId, $data);
-//
-//            $email = \Config\Services::email();
-//
-//            $email->setTo('gg.188.gagarin@gmail.com');
-//            $email->setSubject('Security Code');
-//            $email->setMessage($hashString);
-//
-//            if ($email->send()) {
-//                $step = 2;
-//                return view('home/forgot', compact('step'));
-//            } else {
-//                $data = $email->printDebugger(['headers']);
-//                print_r($data);
-//            }
-//
-//
-//        } else {
-//            return redirect()->back()->with('fail', "Something went wrong, try again few minutes later");
-//        }
-//    }
+    public function sendForgotPassword()
+    {
+        if ($_REQUEST['email']) {//todo do not use native variables
+            $this->validation->setRules(UserModel::itemAlias('validation', 'forgot'));
+            if (!$this->validation->run($_REQUEST)) {//todo do not use native variables
+                return view('home/forgot', ['errors' => $this->validation->getErrors(), 'email' => $_REQUEST['email']]);
+            }
+            $id = $this->user->where('email', $_REQUEST['email'])->first()['id'];
+            $this->setUserId($id);
+            $hashString = md5(time() . $id . $_REQUEST['email']);
+            $currentTime = time();
+            $hashExpiry = $currentTime + 1800;
+            $data = array(
+                'hash_key' => $hashString,
+                'hash_expire' => $hashExpiry
+            );
+            $this->user->update($this->userId, $data);
+
+            $email = \Config\Services::email();
+
+            $email->setTo('gg.188.gagarin@gmail.com');
+            $email->setSubject('Security Code');
+            $email->setMessage($hashString);
+
+            if ($email->send()) {
+                $step = 2;
+                return view('home/forgot', compact('step'));
+            } else {
+                $data = $email->printDebugger(['headers']);
+                print_r($data);
+            }
+
+
+        } else {
+            return redirect()->back()->with('fail', "Something went wrong, try again few minutes later");
+        }
+    }
 
     public function checkSecurityCode()
     {
@@ -135,11 +134,11 @@ class Home extends BaseController
         }
     }
 
-//    public function dashboard()
-//    {
-//        $user = session()->get('user');
-//        return view('dashboard/welcome_page', ['user' => $user]);
-//    }
+    public function dashboard()
+    {
+        $user = session()->get('user');
+        return view('dashboard/welcome_page', ['user' => $user]);
+    }
  }
 
 

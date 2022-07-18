@@ -1,0 +1,15 @@
+.main-block {
+    background-image: url("../img/1627107163_22-kartinkin-com-p-zadnii-fon-uzori-krasivo-23.jpg");
+
+}
+.input_color {
+    background-color: rgba(237, 205, 209, 0.94);
+}
+.btn{
+    background-color: #8880df;
+}
+
+.bright_text {
+    color: #f6d7da;
+}
+.page-link { padding-left: 1em}

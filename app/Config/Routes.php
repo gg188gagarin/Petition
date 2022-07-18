@@ -40,6 +40,15 @@ $routes->get('/register', 'Home::register');
 $routes->post('/register', 'Home::save');
 $routes->get('/login', 'Home::login');
 $routes->post('/login', 'Home::checkOnLogin');
+$routes->get('/dashboard', 'Home::dashboard');
+$routes->get('/dashboard/petitions', 'Petition::petitionsByUser');
+$routes->get('/petition/create', 'Petition::create');
+$routes->post('/petition/create', 'Petition::save');
+$routes->get('/petition/update/(:num)', 'Petition::edit/$1');
+$routes->post('/petition/update/(:num)', 'Petition::update/$1');
+$routes->get('/petition/delete/(:num)', 'Petition::delete/$1');
+$routes->get('/logout', 'Home::logout');
+
 
 /*
  * --------------------------------------------------------------------
