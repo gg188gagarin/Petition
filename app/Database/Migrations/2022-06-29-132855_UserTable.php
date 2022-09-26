@@ -13,6 +13,7 @@ class UserTable extends Migration
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
+  `is_admin` tinyint(1) DEFAULT '0',
   `firstname` varchar(45) DEFAULT NULL,
   `lastname` varchar(45) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
