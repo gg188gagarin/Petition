@@ -132,3 +132,4 @@ nb-configuration.xml
 /writable/uploads
 
 
+/public/uploads/*
