@@ -3,12 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\PetitionModel as PetitionModel;
-use App\Models\UserModel;
+use App\Models\UserModel as UserModel;
+use App\Models\UserPetitionModel as UserPetitionModel;
 
 class Petition extends BaseController
 {
     private PetitionModel $petition;
     private UserModel $user;
+    private UserPetitionModel $userPetition;
 
     public function __construct()
     {
