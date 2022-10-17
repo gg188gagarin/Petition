@@ -1,15 +1,165 @@
-.main-block {
-    background-image: url("../img/1627107163_22-kartinkin-com-p-zadnii-fon-uzori-krasivo-23.jpg");
-
-}
-.input_color {
-    background-color: rgba(237, 205, 209, 0.94);
-}
-.btn{
-    background-color: #8880df;
+.container {
+    max-width: 1180px;
+    margin: 0px auto;
+    padding: 0px 10px;
 }
 
-.bright_text {
-    color: #f6d7da;
+@media (max-width: 1200px ) {
+    .container {
+        max-width: 970px;
+    }
 }
-.page-link { padding-left: 1em}
+
+@media (max-width: 992px ) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+@media (max-width: 767px ) {
+    .container {
+        max-width: none;
+        min-width: 360px;
+    }
+}
+
+
+html, body {
+    height: 100%;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+}
+
+.header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 110, 253, 0.97);
+}
+
+.header_body {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+}
+
+.header_logo {
+    flex: 0 0 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.header_logo img {
+    max-width: 100%;
+    display: block;
+}
+
+.header_burger {
+    display: none;
+}
+
+.header_menu {
+}
+
+@media (max-width: 767px) {
+    .header_burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+    }
+
+    .header_burger:before,
+    .header_burger:after {
+        content: '';
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+    }
+
+    .header_burger:before {
+        top: 0;
+    }
+
+    .header_burger:after {
+        bottom: 0;
+    }
+}
+
+.header_list {
+    display: flex;
+}
+
+.header_list li {
+    list-style: none;
+    margin: 0px 0px 0px 20px;
+    color: white;
+}
+
+.header_link {
+    color: ghostwhite;
+    text-transform: uppercase;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.content {
+    padding: 100px 0px 0px 0px;
+}
+
+.content_text p {
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.content_text {
+    margin: 0px 0px 20px 0px;
+}
+
+
+.zoom:hover {
+    transform: scale(1.1);
+    background-color: white;
+}
+
+.namestatusitem:hover {
+    color: rgba(0, 0, 0, 0.73);
+}
+
+.namestatusitem {
+    color: rgba(115, 113, 124, 0.83)
+}
+
+.zoomH:hover {
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

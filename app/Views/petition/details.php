@@ -2,10 +2,15 @@
 <?= $this->section('content'); ?>
     <div class="row">
         <div class="col-11">
-            <p class="card-text">Actual status: <?= ucwords(strtolower($petition['status'])) ?></p>
-            <h3><?= $petition['name'] ?></h3>
-            <h6>Author: <?= $petition['firstname'] ?> <?= $petition['lastname'] ?></h6>
-            <?= $petition['description'] ?>
+            <h5 class="card-text fw-bolder">Actual status:  <span
+                        class="badge badge-light-success fw-bold fs-8 bg-success bg-opacity-50">
+                        <?= ucwords(strtolower($petition['status'])) ?></span>
+            </h5>
+
+
+            <h3 class="text-uppercase"><?= $petition['name'] ?></h3>
+            <h6 class="mb-4 ">Author: <?= $petition['firstname'] ?> <?= $petition['lastname'] ?></h6>
+            <div class="lead"><?= $petition['description'] ?></div>
         </div>
     </div>
 <?php if ($petition['status'] == \App\Models\PetitionModel::STATUS_ACTIVE) { ?>
@@ -43,6 +48,7 @@
                     type="submit"
                     name="status">Declined
             </button>
+
         </form>
     <?php } ?>
 <?php } ?>

@@ -4,21 +4,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Petition</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
     <link href="<?= base_url("/css/main.css") ?>" rel="stylesheet" type="text/css">
-
+<!--    <link href="--><?//= base_url("/css/style.bundle.css") ?><!--" rel="stylesheet" type="text/css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/script.js"></script>
+<!--    <script src="/js/user.js"></script>-->
+<!--    <script src="/js/bootstrap.bundle.min.js"></script>-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
-<body>
-<?= $this->include('layouts/header'); ?>
-<div class="main-block" style="height: 1100px">
-<div class="container" >
-    <?php $this->renderSection('content') ?>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+<body class="bg-light bg-opacity-10">
+<?php if (!empty(session()->get('user'))) { ?>
+    <?= $this->include('layouts/header'); ?>
+    <main>
+        <section class="container-sm mt-4">
+            <div class="row">
+                <div class="col-2 d-none d-lg-block border-end " style="border-color: rgba(239,242,245,0.48)">
+                    <div>
+                        <?= $this->include('/petition/sidebars/left_sidebar'); ?>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="col container me-3">
+                        <?php $this->renderSection('content') ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<?php } else { ?>
+    <div>
+        <?php $this->renderSection('login') ?>
+        <?php $this->renderSection('content') ?>
+    </div>
+<?php } ?>
+
 </body>
 </html>
-
 

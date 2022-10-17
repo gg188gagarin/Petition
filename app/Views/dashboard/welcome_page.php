@@ -1,6 +1,35 @@
 <?php $this->extend('layouts/main') ?>
 <?php $this->section('content') ?>
-<h1 style="color: #86b7fe">Hi, <?= $user['firstname']; ?>! <a href="<?= base_url('petition/create') ?>" style="color: #f6d7da">Here</a> you can create petition. And
-    <a href="<?= base_url('dashboard/petitions') ?>" style="color: #f6d7da">here</a> you can see your petitions with its statuses.</h1>
+
+<h1 class="welcPage_text text-secondary">
+    Hi, <?= $user['firstname']; ?>!
+    <a href="<?= route_to('Home::update', $user['id']) ?>"
+       class="herestyle m-4 text-decoration-none text-dark fw-bold">PERSONAL-page</a></h1>
+<h1 class="welcPage_text text-secondary">
+    <a href="<?= base_url('petition/create') ?>" class="herestyle text-decoration-none text-dark fw-bold">Here</a>
+    you can create petition
+</h1>
+<h1 class="welcPage_text text-secondary">
+    <a href="<?= base_url('/petitions/my') ?>" class="herestyle text-decoration-none text-dark fw-bold">Here</a>
+    you can see the petitions you created.</h1>
+</h1>
+
+<?php $isadmin = session()->get('user')['is_admin'] ?>
+<?php if ($isadmin === '1') { ?>
+
+
+    <h1 class="welcPage_text text-secondary">
+        <a href="<?= base_url('/petitions') ?>" class="herestyle text-decoration-none text-dark fw-bold">Here</a>
+        you can see all petitions.</h1>
+    </h1>
+<?php } else { ?>
+    <h1 class="welcPage_text text-secondary">
+        <a href="<?= base_url('/petitions?mult=premodarating,active,unsupported,supported,inreview,declined,accepted') ?>"
+           class="herestyle text-decoration-none text-dark fw-bold">Here</a>
+        you can see all petitions.</h1>
+    </h1>
+
+<?php } ?>
+
 <?php $this->endSection() ?>
 

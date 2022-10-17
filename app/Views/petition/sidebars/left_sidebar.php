@@ -9,12 +9,15 @@
 
 
 
+<?php $array = PetitionModel::countMyPetitions(session()->get('id')); ?>
 
 <?php foreach (PetitionModel::myStatuses('statuses') as $key => $status) { ?>
-    <div class="row pt-1 pb-1 namestatus align-middle me-2">
-        <a href="<?= ('/petitions/my/'), $key ?>" class="menu-link text-decoration-none" >
+    <div class="row pt-1 pb-1 align-middle me-2">
+        <a href="<?= ('/petitions/my/'), $key ?>" class="menu-link text-decoration-none zoom" >
             <span class="namestatusitem " align="left"><?php echo $status['name'] ?></span>
-            <span class="float-end text-secondary text-opacity-50"><?= (PetitionModel::countPetitionStatus($key, session()->get('id'))) ?></span>
+            <span class="float-end text-secondary text-opacity-50">
+                <?php echo $array[$key]; ?>
+            </span>
         </a>
     </div>
 <?php } ?>
@@ -26,11 +29,14 @@
         <span class="menu-section  text-uppercase fs-7 " >My Subs</span></div>
 </div>
 
+<?php $array = PetitionModel::countMySubsPetitions(session()->get('user')['id']); ?>
 <?php foreach (PetitionModel::mySubStatuses('statuses') as $key => $status) { ?>
-    <div class="row pt-1 pb-1 namestatus align-middle me-2">
-        <a href="<?= ('/petitions/my-subs/'), $key ?>" class="menu-link text-decoration-none" >
+    <div class="row pt-1 pb-1 align-middle me-2">
+        <a href="<?= ('/petitions/my-subs/'), $key ?>" class="menu-link text-decoration-none zoom" >
             <span class="namestatusitem " align="left"><?php echo $status['name'] ?></span>
-            <span class="float-end text-secondary text-opacity-50"><?= (PetitionModel::countPetitionStatus($key, session()->get('id'))) ?></span>
+            <span class="float-end text-secondary text-opacity-50">
+                <?php echo $array[$key]; ?>
+            </span>
         </a>
     </div>
 <?php } ?>
@@ -42,28 +48,19 @@
 </div>
 
 
+
+<?php $array = PetitionModel::countAllPetitions(); ?>
+
 <?php foreach (PetitionModel::allStatuses('statuses') as $key => $status) { ?>
-    <div class="row pt-1 pb-1 namestatus align-middle me-2">
-        <a href="<?= ('/petitions/'), $key ?>" class="menu-link text-decoration-none" >
+    <div class="row pt-1 pb-1 align-middle me-2">
+        <a href="<?= ('/petitions/'), $key ?>" class="menu-link text-decoration-none zoom" >
             <span class="namestatusitem " align="left"><?php echo $status['name'] ?></span>
-            <span class="float-end text-secondary text-opacity-50"><?= (PetitionModel::countPetitionStatus($key, session()->get('id'))) ?></span>
+            <span class="float-end text-secondary text-opacity-50">
+
+                <?php echo $array[$key]; ?>
+
+            </span>
         </a>
     </div>
 <?php } ?>
 
-
-
-
-<style>
-    .namestatus:hover {
-        background-color: rgba(142, 179, 252, 0.42);
-        border-radius: 0.3em;
-    }
-    .namestatusitem:hover {
-        color: rgba(0, 0, 0, 0.73);
-    }
-    .namestatusitem {
-        color: rgba(115,113,124,0.83)
-    }
-
-</style>

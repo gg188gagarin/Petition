@@ -21,33 +21,74 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('register');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-// The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
-// where controller filters or CSRF protection are bypassed.
-// If you don't want to define all routes, please use the Auto Routing (Improved).
-// Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-//$routes->setAutoRoute(false);
 
-/*
- * --------------------------------------------------------------------
- * Route Definitions
- * --------------------------------------------------------------------
- */
 
-// We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-$routes->get('/', 'Home::register');
-$routes->get('/register', 'Home::register');
-$routes->post('/register', 'Home::save');
-$routes->get('/login', 'Home::login');
+
+
+
 $routes->post('/login', 'Home::checkOnLogin');
-$routes->get('/dashboard', 'Home::dashboard');
-$routes->get('/dashboard/petitions', 'Petition::petitionsByUser');
-$routes->get('/petition/create', 'Petition::create');
-$routes->post('/petition/create', 'Petition::save');
-$routes->get('/petition/update/(:num)', 'Petition::edit/$1');
-$routes->post('/petition/update/(:num)', 'Petition::update/$1');
-$routes->get('/petition/delete/(:num)', 'Petition::delete/$1');
-$routes->get('/logout', 'Home::logout');
+
+
+$routes->group("",["filter" => "LogOutFilter"],function ($routes){
+    $routes->get('/login', 'Home::login');
+    $routes->get('/', 'Home::login');
+    $routes->get('/login/forgot', 'Home::forgotPassword');
+    $routes->post('/login/forgot', 'Home::forgotPassword');
+    $routes->get('/login/forgot/check', 'Home::forgotPassword');
+    $routes->post('/login/forgot/check', 'Home::forgotPassword');
+
+    $routes->get('/register', 'Home::register');
+    $routes->post('/register', 'Home::save');
+    $routes->post('/check', 'Home::check');
+});
+
+$routes->group("",["filter" => "LogInFilter"],function ($routes) {
+    $routes->get('/petitions/delete/(:num)', 'Petition::delete/$1');
+
+    $routes->get('/logout', 'Home::logout');
+    $routes->get('/home', 'Home::dashboard');
+
+    $routes->get('/upload/upload/(:num)', 'Home::upload_user_photo/$1');
+    $routes->post('/upload/upload/(:num)', 'Home::upload_user_photo/$1');
+
+
+    $routes->get('/petitions/my-subs/(:alpha)', 'Petition::mySubs/$1');
+    $routes->get('/petitions/my-subs', 'Petition::mySubs');
+    $routes->get('/petitions/subscribe/(:num)', 'Petition::subscribe/$1');
+
+    $routes->get('/petitions/my', 'Petition::my');
+    $routes->get('/petitions/my/(:alpha)', 'Petition::my/$1');
+
+    $routes->get('/petitions/', 'Petition::all');
+    $routes->get('/petitions/(:alpha)', 'Petition::all/$1');
+
+    $routes->get('/users/', 'Home::all');
+    $routes->get('/users/(:any)', 'Home::all/$1');
+
+    $routes->get('/petition/create', 'Petition::create');
+    $routes->post('/petition/create', 'Petition::save');
+
+    $routes->get('/admin_panel/(:num)', 'Home::edit/$1');
+    $routes->post('/admin_panel/(:num)', 'Home::update/$1');
+    $routes->get('/admin_panel/tb/(:num)', 'Petition::tb_petition_user/$1');
+
+    $routes->get('/home/update/(:num)', 'Home::edit/$1');
+    $routes->post('/home/update/(:num)', 'Home::update/$1');
+
+    $routes->get('/details/(:num)', 'Petition::details/$1');
+    $routes->post('/details/(:num)', 'Petition::details/$1');
+
+    $routes->get('/petition/update/(:num)', 'Petition::edit/$1');
+    $routes->post('/petition/update/(:num)', 'Petition::update/$1');
+
+    $routes->get('/setStatus/(:num)/(:alpha)', 'Petition::setStatus/$1/$2');
+
+});
+
+
+
+
+
 
 
 /*

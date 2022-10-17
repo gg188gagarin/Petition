@@ -3,8 +3,12 @@
 
 namespace App\Models;
 
+use App\Models\ImageModel;
+
 class UserModel extends BaseModel
 {
+//    public static ImageModel  $userAvatarPath;
+
     protected $DBGroup = 'default';
     protected $table = 'user';
     protected $primaryKey = 'id';
@@ -13,7 +17,7 @@ class UserModel extends BaseModel
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'hash_key', 'hash_expire'];
+    protected $allowedFields = ['is_admin', 'firstname', 'lastname', 'email', 'password', 'hash_key', 'hash_expire'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,8 +27,6 @@ class UserModel extends BaseModel
     protected $deletedField = 'deleted_at';
 
     // Validation
-
-
     protected $validationRules = [];
     protected $validationMessages = [];
     protected $skipValidation = true;
@@ -40,6 +42,10 @@ class UserModel extends BaseModel
     protected $afterFind = [];
     protected $beforeDelete = [];
     protected $afterDelete = [];
+
+
+    const IS_ADMIN = 1;
+    const PER_PAGE = 5;
 
     protected static $_items = [
         'validation' => [
@@ -83,6 +89,28 @@ class UserModel extends BaseModel
                     ]
                 ]
             ],
+            'update' => [
+                "firstname" => [
+                    "rules" => "required",
+                    "errors" => [
+                        "required" => "The firstname field is required"
+                    ]
+                ],
+                "lastname" => [
+                    "rules" => "required",
+                    "errors" => [
+                        "required" => "The lastname field is required"
+                    ]
+                ],
+                "email" => [
+                    "rules" => "required|valid_email|min_length[5]",
+                    "errors" => [
+                        "required" => "The email field is required",
+                        "valid_email" => "Please provide a valid email address",
+                        "min_length" => "Please enter more than 5 characters in email field",
+                    ]
+                ],
+            ],
             'login' => [
                 "email" => [
                     "rules" => "required|valid_email|is_not_unique[user.email]",
@@ -112,6 +140,9 @@ class UserModel extends BaseModel
                 ]
             ]
         ],
+        'statuses' => [
+
+        ],
     ];
 
     protected function hashPassword(array $data)
@@ -122,4 +153,36 @@ class UserModel extends BaseModel
         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
         return $data;
     }
+
+    public static function isAdmin()
+    {
+        $user = session()->get('user');
+        return $user['is_admin'] == self::IS_ADMIN;
+    }
+
+    public static function user_avatar($user)
+    {
+        $userAvatarPath = new ImageModel();
+        $path = $userAvatarPath
+            ->select('img_path')
+            ->where('user_id', $user['id'])
+            ->first();
+        return $path ? $path['img_path'] : null;
+    }
+
+
+    public static function initials($user)
+    {
+        $userFirstLetter = '';
+        if ($user['firstname']) {
+            $userFirstLetter .= $user['firstname']['0'];
+        }
+        if ($user['lastname']) {
+            $userFirstLetter .= $user['lastname']['0'];
+        }
+        return $userFirstLetter;
+    }
+
+
+
 }

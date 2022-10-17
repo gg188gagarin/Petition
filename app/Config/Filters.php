@@ -2,6 +2,9 @@
 
 namespace Config;
 
+use App\Filters\IsAdmin;
+use App\Filters\LogInFilter;
+use App\Filters\LogOutFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -23,6 +26,9 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'LogInFilter' => LogInFilter::class,
+        'LogOutFilter' => LogOutFilter::class,
+        'IsAdmin' => IsAdmin::class,
     ];
 
     /**

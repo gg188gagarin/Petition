@@ -16,4 +16,9 @@ class BaseModel extends Model
             return isset(static::$_items[$type]) ? static::$_items[$type] : false;
         }
     }
+
+    public static function formatDate($timestamp) {
+        $formatted = $timestamp; //@todo
+        return $formatted;
+    }
 }

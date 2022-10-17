@@ -1,25 +1,115 @@
-<header class=" d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 " style="background-color: rgba(88,90,215,0.74)"  >
-    <a href="/" class="d-flex align-items-center  text-dark text-decoration-none bright_text"  style="padding-left: 15em; ">
-        <img width="25" height="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAEU0lEQVRoge2aTWhcVRTHf2ZqpMYktCb2Q2P8gFSJC40ijSAFQVftQsmi1YUWtAWhq0I3RnQlaKu4UXTh18KNWEXTTVWwoC1YabpQsBUrpO1CW20xtiaOycTF+T/m5eXe9858VKY4fzjMnTnnnvM/9953v97ApcdB4Kv/IE5d6AR6nLYLEg965bspuFuSh0+AP4A1Dn/eRNYA0/KdhyC/joDhNkkeyliPjDkIejEGdMt3Hgr5lYBNWKtMq1yK2G7BWvmAg+CTkiIckM8tjfBbCxyiOgwSOSRdFj3ALDAHrHKQLMIq+Zol/OzVxK+WHgGYkLPtBSQHJHnYLl8TOTa18uNN4I2CwABPKPhnBXbPA88V2HwuX4874nr5LZoVniae9UrswSyrHEIfcFLS14Cfkrhk+bnQD8wA4zk2+7GW3Jr5fS3wPjbmk/E8q9+yY3qr9Ptz4oyLS7+T+yKMAvPAP8D6iM02kdgX0K0D9mAP8ZzK6wJ2++QjNqWuF4d5caoLuxXkBOHZpE9BZrFVOYQJ4NOIrhtr6TnguoD+GuC4OLzkZh3AlcA3cvRuxCaZ/x+N6DcBGyO6x1T3y4j+PemP0ISty23ABTncHNDvkG5vpH6J+ISxV3V3BHSbpbtAeEjWheRZOA8MZnQ3ABXgItBVg88u1anIRxqDirUAPFUH31x8LMdvBXTJqhvae52SZDFGdXXO4m3pPqqLaQFWAu8ADwZ0OxX4tYAutvt9Xb/vDOgeUqzYunLJ0Au8AtwZ0MUSuQt4mfhsVxOucNj0YlPjPHYGqaQ+PUgWxeVO+w7FTD5LwBnFjGKZw/F3LN30VYBfsK3HaeAYNkUeYenz8AjhHhmgut24HbgeuBFYzdJz0hRwk4NrLpKh8Ru2eGW30lk5hi2kIwFfI9Idd/iZUUzXCdMztBIniW3S5auxFhzAWnREkt4BHASeUfkF4L6UbhqYlPyA9eRJrKfTQzcb341hESizuIU8WAZsAF6lug5UJAvAOek24BvWZDiUxW3YU/Eo4a6uFV3As6n648DVdfgJcTnqqZi0XrJK15tIlkgz6ndR7eXCoZYN3EqJpL8vSiR0HXRZop1Iq6GdSKuhnUiroZ1Iq6GdSKuhnUirwXu4ATvMzGCHm4vAn9idbbP5dGPb9U78FxbBPX32aJm39z8PnAV+BX6WfI9dQkxF/A0C9wB3ALcAN2Ov3vqBFZE4C1RHT+KvI1V29cge4IGUfTd2uX2tAq8AhoD7M/VOYLeTCXYDDwO35sT6C/gdu+FP9/gXRSQ9PZKH5VhCg1jrDmEXb/cSfylzFjiMHVd/xHpxSgnMOGIGeyRm2MiJLgkyCryIXa6dUXmUxieY4AkxhOyZvVF00ry/ZdR0Zp+k+PKsSD4Ergr47gQ+aIL/SU/Ww8DXwN8NBjuMvanql2yk+varXimLm+teq1EMYTNWjMxPsrks0APsAr7FbhfPqbwL/9+j/p/4F2XijRBrF0bKAAAAAElFTkSuQmCC" style="color: #f6d7da; "> Petitions
-    </a>
+<header>
+    <div class="navbar shadow-sm">
+        <div class="container-sm">
+            <div class="row py-3 flex-grow-1">
+                <div class="col zoomH">
+                    <a href="<?= base_url('/home') ?>" class="navbar-brand align-items-center text-dark ">
+                        <svg width="20" height="20" fill="none" stroke="currentColor"
+                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"
+                             class="me-2" viewBox="0 0 24 24">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                        <strong>Petitions</strong>
+                    </a>
+                </div>
+                <div class="col-7 d-none d-md-block">
+                    <ul class="nav ">
+                        <li class="nav-item pe-3">
+                            <a href="<?= base_url('/petitions/') ?>" class="btn  border-0 btn-outline-secondary  zoomH"
+                               aria-current="page">All</a>
+                        </li>
+                        <li class="nav-item pe-3">
+                            <a href="<?= base_url('/petitions/my/') ?>"
+                               class="btn  border-0 btn-outline-secondary  zoomH">My
+                                petitions</a>
+                        </li>
+                        <li class="nav-item pe-3">
+                            <a href="<?= base_url('/petitions/my-subs/') ?>"
+                               class="btn  border-0 btn-outline-secondary  zoomH">My Subs</a>
+                        </li>
+                    </ul>
+                </div>
 
-    <?php if (!empty(session()->get('user'))) { ?>
-        <div class="col-md-7 text-end" style="padding-right: 15em">
-            <span style="padding-right: 0.3em"><?= $_SESSION["user"]["email"] ?></span>
-            <a href="<?= base_url('logout') ?>">
-                <button type="submit" class="btn" style="background-color: rgba(37,46,211,0.66); color: #86b7fe">Log out</button>
-            </a>
+
+                <div class="col-3 " align="right">
+                    <ul class="nav list-group-horizontal mb-0 pb-0 mt-0 pt-0">
+                        <?php if (!empty(session()->get('user'))) { ?>
+                            <li class="list-group-item border-0 mb-0 pb-0 mt-0 pt-0 bg-opacity-0 pe-1">
+                                <div class="dropdown dropstart">
+                                    <div class="btn  dropdown-toggle btn btn-outline-secondary
+                                     fw-bolder border-0 text-uppercase"
+                                         type="button"
+                                         id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <?php if (!empty(session()->get('avatar'))) { ?>
+                                            <img src="<?= base_url(session()->get('avatar')) ?>" alt="user" width="32"
+                                                 height="32" class="rounded-circle">
+                                        <?php } else { ?>
+                                            <?= session()->get('user')['firstname']['0'] ?>. <?= session()->get('user')['lastname'] ?>
+                                        <?php } ?>
+                                    </div>
+                                    <ul class="dropdown-menu dropdown-menu bg-white shadow-lg border-0 "
+                                        aria-labelledby="dropdownMenuButton2">
+                                        <li>
+                                            <?php if (!empty(session()->get('avatar'))) { ?>
+                                                <div class="symbol symbol-50px me-5 dropdown-item">
+                                                    <img class="mw-10" style=" width: 5em; border-radius: 2.5em"
+                                                         src="<?= base_url(session()->get('avatar')) ?>">
+                                                </div>
+                                            <?php } ?>
+                                        </li>
+
+                                        <li>
+                                            <div class="dropdown-item  fw-bolder ucfirst ">
+                                                <?= session()->get('user')['firstname'] ?>
+                                                <?php $isadmin = session()->get('user')['is_admin'] ?>
+                                                <?php if ($isadmin === '1') { ?>
+                                                    <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2"
+                                                          style="background: rgba(0,193,37,0.61)">Admin</span>
+                                                <?php } ?>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-item fw-bolder">
+                                                <?= session()->get('user')['lastname'] ?></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item fw-bolder"><?= session()->get('user')['email'] ?></a>
+                                        </li>
+
+                                        <li>
+                                            <a href="<?= route_to('Home::update', session()->get('user')['id']) ?>"
+                                               class="dropdown-item">My profile</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= ('/petitions/my/') ?>">My</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= ('/petitions/my-subs/') ?>">My Subs</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= ('/petitions/') ?>">All</a>
+                                        </li>
+                                        <?php if ($isadmin === '1') { ?>
+                                            <li>
+                                                <a href="<?= route_to('Home::all', session()->get('user')['id']) ?>"
+                                                   class="dropdown-item">Users</a></li>
+                                        <?php } ?>
+                                        <li><a class="dropdown-item text-dark fw-bolder"
+                                               href="<?= base_url('/logout') ?>">Sign Out</a></li>
+                                    </ul>
+
+                                </div>
+                            </li>
+                        <?php } ?>
+
+
+                    </ul>
+                </div>
+            </div>
         </div>
-
-    <?php } else { ?>
-        <div class="col-md-3 text-end" style="padding-right: 15em">
-            <a href="<?= base_url('login') ?>">
-                <button type="submit" class="btn btn-outline-primary me-2" style="color: #f6d7da;border-color: #f6d7da; ">Login</button>
-            </a>
-            <a href="<?= base_url('register') ?>">
-                <button type="submit" class="btn btn-primary" style="color: #f6d7da;border-color: #f6d7da; background-color: #8880df">Sign-up</button>
-            </a>
-        </div>
-    <?php } ?>
-
+    </div>
 </header>
