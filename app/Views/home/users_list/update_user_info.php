@@ -52,15 +52,19 @@
             <?php } else { ?>
                 <div style="max-width: 5em"
                      class="text-center text-uppercase align-middle rounded-circle bg-opacity-50 bg-success
-                     text-decoration-none fw-bolder text-white ">
+                     text-decoration-none fw-bolder text-white ms-5 ">
                     <?php echo $firstLetter = UserModel::initials($user); ?>
                 </div>
             <?php } ?>
 
 
             <p class="mt-4 zoomH"><a href="<?= base_url('upload/upload/' . $user['id']) ?>"
-                               class="bright_text text-decoration-none  text-secondary text-opacity-50 ms-5 "
+                                     class="bright_text text-decoration-none  text-secondary text-opacity-50 ms-5"
                 >Update profile-photo</a></p>
+            <div class="form-group mt-4 ms-5">
+                <a href="<?= route_to('Home::all', session()->get('user')['id']) ?>"
+                   class="btn btn-outline-secondary text-opacity-75 zoomH">Back to users list</a>
+            </div>
         </div>
 
     </div>

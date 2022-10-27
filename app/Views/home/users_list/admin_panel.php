@@ -20,12 +20,9 @@
                                   style="background: rgba(0,193,37,0.61)">Admin</span>
                         <?php } ?>
                     </div>
-
-
                     <div class="dropdown-item fw-bolder text-secondary text-opacity-75 text-uppercase mt-2">
                         <?= $user['lastname'] ?></div>
                     <a class="dropdown-item fw-bolder text-secondary text-opacity-75 mt-2"><?= $user['email'] ?></a>
-                    <a class="dropdown-item fw-bolder text-secondary text-opacity-75 mt-2">created_at</a>
                 </div>
             </div>
 

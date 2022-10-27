@@ -1,9 +1,9 @@
 <?php foreach ($petitions as $item) { ?>
-    <div class="card petition_card col-md-12  zoom border-0">
+    <div class="card petition_card col-md-12 border-0">
         <div class="card-body">
             <p>
-                <h4 class="fw-bold"><?= $item['name'] ?></h4>
-                <span class="badge badge-light-success fw-bold fs-8 bg-success bg-opacity-50">
+            <h4 class="fw-bold"><?= $item['name'] ?></h4>
+            <span class="badge badge-light-success fw-bold fs-8 bg-success bg-opacity-50">
                     <?= ucwords(strtolower($item['status'])) ?></span>
             </p>
             <span class="fw-bold">Author:</span><span> <?= $item['firstname'] ?> <?= $item['lastname'] ?></span>

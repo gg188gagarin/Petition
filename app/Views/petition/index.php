@@ -12,38 +12,44 @@ use App\Models\PetitionModel;
                   class="searchForm input-group mb-3 mt-0 search_main"
                   method="get">
                 <div class="input-group">
-                    <!--                    <div class="input-group">-->
-                    <input type="text" class="form-control js-query col-6 me-1"
-                           placeholder="Enter some text about petition"
-                           aria-describedby="button-addon1" value="">
-
-<!--                    <select class="js-multiple search_main col-4" name="states[]" multiple="multiple">-->
-<!--                        --><?php //foreach (PetitionModel::allStatuses('statuses') as $key => $status) { ?>
-<!--                            <option value="draft">--><?php //echo $status['name'] ?><!--</option>-->
-<!--                        --><?php //} ?>
-<!--                    </select>-->
-                    <button name="q" class="btn btn-outline-secondary search " type="submit" id="button-addon1">Find
-                    </button>
-                    <!--                    </div>-->
+                    <div class="input-group">
+                        <input type="text" class="form-control js-query col-3 me-3" name="q"
+                               placeholder="Enter some text about petition"
+                               aria-describedby="button-addon1" value="">
+                        <select class="js-multiple search_main col-4" multiple="multiple" name="mult">
+                            <option value="draft">Draft</option>
+                            <option value="premodarating">Premodarating</option>
+                            <option value="active">Active</option>
+                            <option value="unsupported">Unsupported</option>
+                            <option value="supported">Supported</option>
+                            <option value="inreview">Inreview</option>
+                            <option value="declined">Declined</option>
+                            <option value="accepted">Accepted</option>
+                        </select>
+                        <button name="q" class="btn btn-outline-secondary search " type="submit" id="button-addon1">Find
+                        </button>
+                    </div>
                 </div>
 
-                <div>
-                    <h5>Search by status:</h5>
+                <!--                <div>-->
+                <!--                    <h5>Search by status:</h5>-->
+                <!---->
+                <!--                    <select class="js-multiple search_main col-4" multiple="multiple">-->
+                <!--                        <option value="draft">Draft</option>-->
+                <!--                        <option value="premodarating">Premodarating</option>-->
+                <!--                        <option value="active">Active</option>-->
+                <!--                        <option value="unsupported">Unsupported</option>-->
+                <!--                        <option value="supported">Supported</option>-->
+                <!--                        <option value="inreview">Inreview</option>-->
+                <!--                        <option value="declined">Declined</option>-->
+                <!--                        <option value="accepted">Accepted</option>-->
+                <!--                    </select>-->
+                <!--                    <button class="btn btn-outline-secondary js-search " type="submit" >Find by-->
+                <!--                        status-->
+                <!--                    </button>-->
+                <!--                </div>-->
 
-                    <select class="js-multiple search_main col-4" multiple="multiple">
-                        <option value="draft">Draft</option>
-                        <option value="premodarating">Premodarating</option>
-                        <option value="active">Active</option>
-                        <option value="unsupported">Unsupported</option>
-                        <option value="supported">Supported</option>
-                        <option value="inreview">Inreview</option>
-                        <option value="declined">Declined</option>
-                        <option value="accepted">Accepted</option>
-                    </select>
-                    <button class="btn btn-outline-secondary js-search " type="submit" >Find by
-                        status
-                    </button>
-                </div>
+
             </form>
 
             <p class="searchError"></p>

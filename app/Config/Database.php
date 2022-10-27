@@ -32,8 +32,8 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'petition.local',
-        'username' => 'root',
+        'hostname' => '127.0.0.1',
+        'username' => 'mike',
         'password' => 'qwerty',
         'database' => 'petition',
         'DBDriver' => 'MySQLi',
