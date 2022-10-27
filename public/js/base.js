@@ -22,20 +22,14 @@ class Base {
             e.preventDefault();
             let url = $(this).attr("href");
             console.log('1');
-            window.history.pushState("data", "Title", url);
-            console.log('2');
-            $.ajax({
-                url: url,
-                contentType: 'json',
-                type: 'GET',
-                success: function (response) {
-                    console.log('123');
 
-                    $('.js-petition-content').html(response);
-                    console.log(this);
-                    Base.prototype.initPager(); //todo check prototype
-                }
+            Base.prototype.ajax(url, function (response) {
+                window.history.pushState("data", "Title", url);
+                $('.js-petition-content').html(response);
+                console.log(this);
+                Base.prototype.initPager(); //todo check prototype
             });
+
         });
     };
 

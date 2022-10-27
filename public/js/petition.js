@@ -9,8 +9,8 @@ class Petition extends Base {
                 $('.js-petition-content').html(response);
                 Petition.prototype.initPager();
             });
-            Petition.prototype.getUrlByForm('.searchForm');
         });
     }
 }
+
 let petition = new Petition()
