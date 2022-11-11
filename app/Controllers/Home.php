@@ -33,6 +33,29 @@ class Home extends BaseController
         return view('home/register');
     }
 
+    public function index()
+    {
+        if ($u = $this->request->getVar('u')) {
+            $this->user->groupStart();
+            $this->user->like('lastname', $u, 'after');
+            $this->user->orLike('firstname', $u, 'after');
+            $this->user->orLike('email', $u, 'after');
+            $this->user->groupEnd();
+        }
+        if ($sort = $this->request->getVar('sort_lastname')) {
+            $this->user->orderBy('user.lastname', $sort);
+        }
+        $users = $this->user
+            ->select('user.*')
+            ->paginate(UserModel::PER_PAGE);
+        $pager = $this->user->pager;
+        if ($this->request->isAJAX()) {
+            return view('home/users_list/indexContent', compact('users', 'pager', 'sort', 'u'));
+        } else {
+            return view('home/users_list/index', compact('users', 'pager', 'sort', 'u'));
+        }
+    }
+
     public function edit(int $id)
     {
         if (!session()->get('user')['is_admin']) {
@@ -177,21 +200,6 @@ class Home extends BaseController
         }
     }
 
-    public function index()
-    {
-        if ($q = $this->request->getVar('q')) {
-            $this->user->like('lastname', $q, 'both');
-        }
-        $users = $this->user
-            ->select('*')
-            ->paginate(UserModel::PER_PAGE);
-        $pager = $this->user->pager;
-        if ($this->request->isAJAX()) {
-            return view('home/users_list/indexContent', compact('users', 'pager'));
-        } else {
-            return view('home/users_list/index', compact('users', 'pager'));
-        }
-    }
 
     public function getUserByName()
     {
@@ -206,7 +214,7 @@ class Home extends BaseController
             $pager = $this->user->pager;
             if ($this->request->isAJAX()) {
                 $data = [
-                    'cardWrapper' => view('home/users_list/indexContentAjax', compact('users')),
+                    'cardWrapper' => view('indexContentAjax', compact('users')),
                     'pages' => view('Pager/pagerAjax', compact('pager')),
                 ];
                 return json_encode($data);

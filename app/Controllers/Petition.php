@@ -28,10 +28,11 @@ class Petition extends BaseController
         if ($status) {
             $this->petition->where('status', $status);
         }
-        if ($mult = $this->request->getVar('mult')) {
-            $statuses = explode(',', $mult);
-            $this->petition
-                ->whereIn('status', $statuses);
+        if ($mult = $this->request->getGet('mult') ? $this->request->getGet('mult') : []) {
+            $this->petition->whereIn('status', $mult);
+        }
+        if ($sort = $this->request->getVar('sort_name')) {
+            $this->petition->orderBy('petition.name', $sort);
         }
         $petitions = $this->petition
             ->select('petition.*, user.firstname, user.lastname')
@@ -39,9 +40,9 @@ class Petition extends BaseController
             ->paginate(PetitionModel::PER_PAGE);
         $pager = $this->petition->pager;
         if ($this->request->isAJAX()) {
-            return view('petition/indexContent', compact('petitions', 'pager', 'status'));
+            return view('petition/indexContent', compact('petitions', 'pager', 'status', 'sort', 'q', 'mult'));
         } else {
-            return view('petition/index', compact('petitions', 'pager', 'status'));
+            return view('petition/index', compact('petitions', 'pager', 'status', 'sort', 'q', 'mult'));
         }
     }
 

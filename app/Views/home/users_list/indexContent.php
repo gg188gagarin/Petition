@@ -1,5 +1,5 @@
 <?php foreach ($users as $item) { ?>
-    <div class="card petition_card col-md-12 zoom  border-0">
+    <div class="card petition_card col-md-12 border-0">
         <div class="card-body">
             <p><span class="fw-bold">Author:</span>
                 <span> <?= $item['firstname'] ?> <?= $item['lastname'] ?>

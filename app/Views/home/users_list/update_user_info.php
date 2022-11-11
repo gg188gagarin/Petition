@@ -62,7 +62,7 @@
                                      class="bright_text text-decoration-none  text-secondary text-opacity-50 ms-5"
                 >Update profile-photo</a></p>
             <div class="form-group mt-4 ms-5">
-                <a href="<?= route_to('Home::all', session()->get('user')['id']) ?>"
+                <a href="<?= route_to('Home::all') ?>"
                    class="btn btn-outline-secondary text-opacity-75 zoomH">Back to users list</a>
             </div>
         </div>

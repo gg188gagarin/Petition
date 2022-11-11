@@ -149,7 +149,12 @@ html, body {
     transform: scale(1.2);
 }
 
-
+.select_sort_block {
+    border: none;
+    border-color: snow;
+    margin-top: 1em;
+    background-color: snow;
+}
 
 
 

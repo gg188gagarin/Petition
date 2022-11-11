@@ -3,6 +3,7 @@ class Petition extends Base {
     init() {
         $(".search").on("click", function (e) {
             e.preventDefault();
+            console.log('Petition');
             let url = Petition.prototype.getUrlByForm('.searchForm');
             Petition.prototype.ajax(url, function (response) {
                 window.history.pushState("data", "Title", url);

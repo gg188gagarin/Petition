@@ -22,14 +22,6 @@
         <a href="<?= base_url('/petitions') ?>" class="herestyle text-decoration-none text-dark fw-bold">Here</a>
         you can see all petitions.</h1>
     </h1>
-<?php } else { ?>
-    <h1 class="welcPage_text text-secondary">
-        <a href="<?= base_url('/petitions?mult=premodarating,active,unsupported,supported,inreview,declined,accepted') ?>"
-           class="herestyle text-decoration-none text-dark fw-bold">Here</a>
-        you can see all petitions.</h1>
-    </h1>
-
-<?php } ?>
-
+<?php }  ?>
 <?php $this->endSection() ?>
 

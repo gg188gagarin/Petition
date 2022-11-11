@@ -13,6 +13,7 @@ class Base {
     }
 
     getUrlByForm(selector) {
+        console.log('selector', selector);
         let url = $(selector).attr('action') + '?' + $("form").serialize();
         return url;
     }
@@ -21,7 +22,6 @@ class Base {
         $(".pages").on("click", "a", function (e) {
             e.preventDefault();
             let url = $(this).attr("href");
-            console.log('1');
 
             Base.prototype.ajax(url, function (response) {
                 window.history.pushState("data", "Title", url);
@@ -34,6 +34,7 @@ class Base {
     };
 
     ajax(url, callback) {
+        console.log('url', url);
         $.ajax({
             url: url,
             contentType: 'json',
@@ -48,6 +49,7 @@ class Base {
 
     initBase() {
         $('.js-multiple').select2();
+        console.log('Base');
         this.initPager();
     }
 

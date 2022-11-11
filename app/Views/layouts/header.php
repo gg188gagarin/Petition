@@ -95,7 +95,7 @@
                                         </li>
                                         <?php if ($isadmin === '1') { ?>
                                             <li>
-                                                <a href="<?= route_to('Home::all', session()->get('user')['id']) ?>"
+                                                <a href="<?= route_to('Home::all') ?>"
                                                    class="dropdown-item">Users</a></li>
                                         <?php } ?>
                                         <li><a class="dropdown-item text-dark fw-bolder"

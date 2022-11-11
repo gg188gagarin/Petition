@@ -63,7 +63,6 @@ $routes->group("",["filter" => "LogInFilter"],function ($routes) {
     $routes->get('/petitions/(:alpha)', 'Petition::all/$1');
 
     $routes->get('/users/', 'Home::all');
-    $routes->get('/users/(:any)', 'Home::all/$1');
 
     $routes->get('/petition/create', 'Petition::create');
     $routes->post('/petition/create', 'Petition::save');
