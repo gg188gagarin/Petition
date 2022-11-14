@@ -31,28 +31,11 @@ use App\Models\PetitionModel;
                         <div class="text-secondary text-opacity-75 ">Filtered by:</div>
                         <select class="js-multiple search_main  form-select" multiple="multiple" name="mult[]"
                                 aria-label="multiple select" style="height: 110%">
-                            <option value="draft" <?php if (in_array('draft', $mult)) echo 'selected'; ?>>Draft
-                            </option>
-                            <option value="premodarating" <?php if (in_array('premodarating', $mult)) echo 'selected'; ?>>
-                                Premodarating
-                            </option>
-                            <option value="active" <?php if (in_array('active', $mult)) echo 'selected'; ?>>Active
-                            </option>
-                            <option value="unsupported" <?php if (in_array('unsupported', $mult)) echo 'selected'; ?>>
-                                Unsupported
-                            </option>
-                            <option value="supported" <?php if (in_array('supported', $mult)) echo 'selected'; ?>>
-                                Supported
-                            </option>
-                            <option value="inreview" <?php if (in_array('inreview', $mult)) echo 'selected'; ?>>
-                                Inreview
-                            </option>
-                            <option value="declined" <?php if (in_array('declined', $mult)) echo 'selected'; ?>>
-                                Declined
-                            </option>
-                            <option value="accepted" <?php if (in_array('accepted', $mult)) echo 'selected'; ?>>
-                                Accepted
-                            </option>
+                            <?php $options = PetitionModel::itemAlias('all'); ?>
+                              <?php foreach ($options as $key => $option) { ?>
+                                  <option value="<?php echo $key; ?>" <?php if (in_array($key, $mult)) echo 'selected'; ?>
+                                  ><?= $option['name'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
 
