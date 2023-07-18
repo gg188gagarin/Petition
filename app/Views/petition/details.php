@@ -13,6 +13,37 @@
             <div class="lead"><?= $petition['description'] ?></div>
         </div>
     </div>
+
+    <div class="col-6">
+        <table class="table table-striped mt-3 ">
+            <thead>
+            <tr>
+                <th scope="col">Subscribers</th>
+                <!--            <th scope="col">Updated_at</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <?php use App\Models\BaseModel; ?> 
+            <?php foreach ($users as $item) { ?>
+                <tr class="">
+                    <td class="align-middle"><?= $item['firstname']  ?> <?= $item['firstname']  ?></td>
+                    <!--                <td class="align-middle">--><?//= BaseModel::formatDate($item['updated_at']); ?><!--</td>-->
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 <?php if ($petition['status'] == \App\Models\PetitionModel::STATUS_ACTIVE) { ?>
     <?php if ($petition['user_id'] != session()->get('user')['id']) { ?>
 
@@ -31,6 +62,8 @@
     <?php } ?>
     </div>
     <?php if ($petition['status'] == \App\Models\PetitionModel::STATUS_INREVIEW) { ?>
+
+
         <form action="<?= ('/petitions/comment') ?>" method="post">
             <div class="form-group">
                 <label>Comment petition

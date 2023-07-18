@@ -20,11 +20,12 @@ class Petition extends BaseController
         $this->userPetition = new UserPetitionModel();
     }
 
-    public function index($status = false)
+    public function index($status = [])
     {
         if ($q = $this->request->getVar('q')) {
             $this->petition->like('name', $q, 'both');
         }
+        $status = $status === false ? [] : $status;
         if ($status) {
             $this->petition->where('status', $status);
         }
@@ -36,8 +37,12 @@ class Petition extends BaseController
         }
         $petitions = $this->petition
             ->select('petition.*, user.firstname, user.lastname')
+            ->select('SUM(IF(user_petition.user_id IS NULL, 0, 1)) as count_subs')
+            ->join('user_petition', 'user_petition.petition_id = petition.id', 'left')
             ->join('user', 'petition.user_id = user.id')
+            ->groupBy('petition.id')
             ->paginate(PetitionModel::PER_PAGE);
+
         $pager = $this->petition->pager;
         if ($this->request->isAJAX()) {
             return view('petition/indexContent', compact('petitions', 'pager', 'status', 'sort', 'q', 'mult'));

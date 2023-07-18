@@ -32,9 +32,9 @@ use App\Models\PetitionModel;
                         <select class="js-multiple search_main  form-select" multiple="multiple" name="mult[]"
                                 aria-label="multiple select" style="height: 110%">
                             <?php $options = PetitionModel::itemAlias('all'); ?>
-                              <?php foreach ($options as $key => $option) { ?>
-                                  <option value="<?php echo $key; ?>" <?php if (in_array($key, $mult)) echo 'selected'; ?>
-                                  ><?= $option['name'] ?></option>
+                            <?php foreach ($options as $key => $option) { ?>
+                                <option value="<?php echo $key; ?>" <?php if (in_array($key, $mult)) echo 'selected'; ?>
+                                ><?= $option['name'] ?></option>
                             <?php } ?>
                         </select>
                     </div>

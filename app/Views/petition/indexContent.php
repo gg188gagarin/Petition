@@ -4,9 +4,10 @@
             <p>
             <h4 class="fw-bold"><?= $item['name'] ?></h4>
             <span class="badge badge-light-success fw-bold fs-8 bg-success bg-opacity-50">
-                    <?= ucwords(strtolower($item['status'])) ?></span>
+                    <?= ucwords(strtolower($item['status'])) ?> , Subs: <a><?= $item['count_subs'] ?></a></span>
+
             </p>
-            <span class="fw-bold">Author:</span><span> <?= $item['firstname'] ?> <?= $item['lastname']?></span>
+            <span class="fw-bold">Author:</span><span> <?= $item['firstname'] ?> <?= $item['lastname'] ?></span>
             <p class="card-text text-secondary"><?= substr($item['description'], 0, 200) ?></p>
             <a href="<?= route_to('Petition::details', $item['id']) ?>"
                class="btn text-white bg-primary bg-opacity-50 ">Open</a>
